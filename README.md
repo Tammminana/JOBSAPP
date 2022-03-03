@@ -347,7 +347,6 @@ const Alert = () => {
 
 export default Alert
 ```
-
 - setup import/export
 - alert-danger or alert-success
 - eventually setup in global context
