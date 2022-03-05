@@ -16,20 +16,28 @@ const Register = () => {
 
     const [val, setVal] = useState(initialState);
 
-    const {isLoading , showAlert} = useAppContext();
+    const {isLoading , showAlert ,  displayAlert} = useAppContext();
+    const {name , email , password, isMember} = val;
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(event)
+        // console.log(event)
+        if (!email || !password || (!isMember && !name)){
+            displayAlert();
+            return;
+        }
     }
 
     const handleChange = (event) => {
-        console.log(event.target);
+        // console.log(event.target);
+        setVal({...val, [event.target.name] : event.target.value})
     }
 
     const toggleMember = () => {
         setVal({ ...val, isMember: !val.isMember });
     }
+
+    
 
     return (
         <Wrapper className='full-page' onSubmit={handleSubmit}>
