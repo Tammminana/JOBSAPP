@@ -1,6 +1,29 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "history": "^5.3.0",
+    "mongoose": "^6.2.4",
     "react-router-dom": "^6.2.2"
-  }
+  },
+  "name": "jobsapp",
+  "description": "Project in Action - [Jobify](https://www.jobify.live/)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tammminana/JOBSAPP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tammminana/JOBSAPP/issues"
+  },
+  "homepage": "https://github.com/Tammminana/JOBSAPP#readme"
 }
