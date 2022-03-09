@@ -1,10 +1,12 @@
 {
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
     "history": "^5.3.0",
     "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
     "react-router-dom": "^6.2.2",
     "validator": "^13.7.0"
@@ -16,7 +18,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "server" : "nodemon server --ignore client",
+    "client" : "npm start --prefix client",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
   },
   "repository": {
     "type": "git",
@@ -28,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/Tammminana/JOBSAPP/issues"
   },
-  "homepage": "https://github.com/Tammminana/JOBSAPP#readme"
+  "homepage": "https://github.com/Tammminana/JOBSAPP#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
 }
