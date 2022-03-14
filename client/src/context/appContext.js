@@ -10,15 +10,19 @@ import {
     from "./actions";
 import axios from 'axios';
 
+const token = localStorage.getItem('token');
+const user = localStorage.getItem('user');
+const userLocation = localStorage.getItem('location')
+
 const initialState = {
     isLoading: false,
     showAlert: true,
     alertText: '',
     alertType: '',
-    user: null,
-    token: null,
-    userLocation: '',
-    jobLocation: '',
+    user: user ? JSON.parse(user) : null,
+    token: token ,
+    userLocation: userLocation || '',
+    jobLocation: userLocation || '',
 }
 
 const AppContext = React.createContext();
@@ -38,6 +42,18 @@ const AppProvider = ({ children }) => {
         clearAlert();
     }
 
+    const addUserToLocalStorage = ({user , location , token }) => {
+        localStorage.setItem('user' , JSON.stringify(user));
+        localStorage.setItem('token' , token );
+        localStorage.setItem('location', location );
+    }
+
+    const removeUserFromLocalStorage = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token ');
+        localStorage.removeItem('location');
+    }
+
     const registerUser = async (currentUser) => {
         // console.log(currentUser)
         dispatch({ type: REGISTER_USER_BEGIN })
@@ -53,7 +69,7 @@ const AppProvider = ({ children }) => {
                     location,
                 }
             })
-
+            addUserToLocalStorage({user, location , token})
         } catch (error) {
             dispatch({
                 type: REGISTER_USER_ERROR,
