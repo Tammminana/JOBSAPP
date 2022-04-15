@@ -17,7 +17,7 @@ const Register = () => {
 
     const [val, setVal] = useState(initialState);
 
-    const { user, isLoading, showAlert, displayAlert, registerUser } = useAppContext();
+    const { user, isLoading, showAlert, displayAlert, registerUser,loginUser,setupUser } = useAppContext();
     const { name, email, password, isMember } = val;
 
     const handleSubmit = (event) => {
@@ -30,9 +30,18 @@ const Register = () => {
 
         const currentUser = { name, email, password }
         if (isMember) {
-            console.log("Already a Member");
+            // console.log("Already a Member");
+            setupUser({
+                currentUser,
+                endPoint : 'login',
+                alertText : 'Login Successful! Redirecting...'
+            });
         } else {
-            registerUser(currentUser);
+            setupUser({
+                currentUser,
+                endPoint : 'register',
+                alertText : 'Registered Successfully! Redirecting'
+            });
         }
     }
 

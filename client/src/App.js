@@ -1,6 +1,7 @@
 // import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import {Dashboard,Landing, Error, Register} from './pages'
+import {Landing, Error, Register} from './pages'
+import {AddJob, AllJobs, Stats, Profile,SharedLayout} from './pages/dashboard/index.js'
 
 // const Button = styled.button`
 //   background: red;
@@ -11,13 +12,13 @@ import {Dashboard,Landing, Error, Register} from './pages'
 function App() {
   return (
     <Router>
-    <nav>
-      <Link to="/">Dashboard </Link>
-      <Link to="/register">register </Link>
-      <Link to="/landing">landing </Link>
-    </nav>
       <Routes>
-      <Route path="/" element={<Dashboard/>}/>
+      <Route path="/">
+        <Route path="stats" element={<Stats/>}/>
+        <Route path="add-job" element={<AddJob/>}/>
+        <Route path="all-jobs" element={<AllJobs/>}/>
+        <Route path="profile" element={<Profile/>}/>
+      </Route>
       <Route path="/register" element={<Register/>}/>
       <Route path="/landing" element={<Landing/>}/>
       <Route path="*" element={<Error/>}/>
